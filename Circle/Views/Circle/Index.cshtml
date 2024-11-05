@@ -1,0 +1,31 @@
+﻿@model Circle.Models.CircleModel
+@{
+    ViewData["Title"] = "Circle Area Calculation";
+}
+
+<div class="container mt-5">
+    <h1 class="text-center">Çemberin Alanını Hesaplayın</h1>
+
+    @if (ViewData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger text-center">
+            @ViewData["ErrorMessage"]
+        </div>
+    }
+
+    <form asp-action="Calculate" method="post" class="mt-4">
+        <div class="mb-3">
+            <label for="radius" class="form-label">Yarıçapı giriniz:</label>
+            <input type="text" class="form-control" id="radius" name="Radius" placeholder="Yarıçap" >
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">Hesapla</button>
+    </form>
+
+    @if (Model.Area > 0)
+    {
+        <div class="mt-4">
+            <p class="alert alert-success text-center">Dairenin Alanı: <strong>@Model.Area</strong></p>
+        </div>
+    }
+</div>
